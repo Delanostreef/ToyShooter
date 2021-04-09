@@ -10,7 +10,6 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField] private float _timeBetweenShots;
     private float _timeStamp;
 
-
     void Update()
     {
         //hiermee blijft de firepoint in het midden en draait het niet mee met het schip zelf zodra het schip tilt
@@ -27,6 +26,8 @@ public class PlayerShooting : MonoBehaviour
     private void InstantiateBullet()
     {
         GameObject bullet = Instantiate(_pfBullet, _firePoint.position, _pfBullet.transform.rotation);
+
+        bullet.GetComponent<Bullet>()._playerShooting = true;
 
         Destroy(bullet, 2f);
     }
