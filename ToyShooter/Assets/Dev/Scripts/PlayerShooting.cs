@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerShooting : MonoBehaviour
 {
     [SerializeField] private GameObject _pfBullet;
-    [SerializeField] private float _bulletForce;
     [SerializeField] private Transform _firePoint;
 
     [SerializeField] private float _timeBetweenShots;
@@ -14,6 +13,7 @@ public class PlayerShooting : MonoBehaviour
 
     void Update()
     {
+        //hiermee blijft de firepoint in het midden en draait het niet mee met het schip zelf zodra het schip tilt
         _firePoint.rotation = Quaternion.Euler(0, 0, transform.rotation.z * -1f);
 
         if (Input.GetKey(KeyCode.Space) && Time.time >= _timeStamp)
@@ -28,6 +28,6 @@ public class PlayerShooting : MonoBehaviour
     {
         GameObject bullet = Instantiate(_pfBullet, _firePoint.position, _pfBullet.transform.rotation);
 
-        bullet.GetComponent<Rigidbody>().AddForce(_firePoint.right * _bulletForce, ForceMode.Impulse);
+        Destroy(bullet, 2f);
     }
 }
