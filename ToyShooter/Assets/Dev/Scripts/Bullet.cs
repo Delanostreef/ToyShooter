@@ -22,6 +22,7 @@ public class Bullet : MonoBehaviour
             {
                 print("u hit yourself smh");
                 Destroy(other.gameObject);
+                Destroy(this.gameObject);
             }
         }
 
@@ -32,6 +33,7 @@ public class Bullet : MonoBehaviour
             {
                 print("u hit a mf");
                 Destroy(other.gameObject);
+                Destroy(this.gameObject);
             }
         }
     }
