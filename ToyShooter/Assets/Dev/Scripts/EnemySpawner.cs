@@ -13,8 +13,8 @@ public class EnemySpawner : MonoBehaviour
 
     private void SpawnEnemy()
     {
-        Vector3 randomSpawnPoint = new Vector2(12f, Random.Range(-4f, 4f));
+        Vector3 randomSpawnPoint = new Vector2(8f, Random.Range(-4f, 4f));
 
-        Instantiate(enemy, randomSpawnPoint, Quaternion.identity);
+        Instantiate(enemy, randomSpawnPoint, enemy.transform.rotation);
     }
 }
