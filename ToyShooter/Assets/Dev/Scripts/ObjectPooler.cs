@@ -13,6 +13,16 @@ public class ObjectPooler : MonoBehaviour
         public int size;
     }
 
+    #region Singleton
+    public static ObjectPooler Instance;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+    #endregion
+
+
     public List<Pool> pools;
     public Dictionary<string, Queue<GameObject>> poolDictionary;
 
@@ -35,6 +45,7 @@ public class ObjectPooler : MonoBehaviour
         }
 
     }
+
     public GameObject SpawnFromPool(string tag, Vector3 position, Quaternion rotation)
     {
         if (!poolDictionary.ContainsKey(tag))
@@ -47,14 +58,11 @@ public class ObjectPooler : MonoBehaviour
 
         GameObject objectToSpawn = poolDictionary[tag].Dequeue();
 
-        objectToSpawn.SetActive(true);
         objectToSpawn.transform.position = position;
         objectToSpawn.transform.rotation = rotation;
-
+        objectToSpawn.SetActive(true);
         poolDictionary[tag].Enqueue(objectToSpawn);
 
         return objectToSpawn;
     }
-    
-
 }
