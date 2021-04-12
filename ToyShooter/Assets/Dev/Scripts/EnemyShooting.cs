@@ -22,7 +22,7 @@ public class EnemyShooting : MonoBehaviour
     {
         for (int i = 0; i < bulletTransforms.Count; i++)
         {
-            GameObject go = objectPooler.SpawnFromPool("Bullet", bulletTransforms[i].position, Quaternion.identity);
+            GameObject go = objectPooler.SpawnFromPool("Bullet", bulletTransforms[i].position, bulletTransforms[i].rotation);
             go.GetComponent<Rigidbody>().velocity = Vector3.zero;
             go.GetComponent<Rigidbody>().AddForce(bulletTransforms[i].up * _bulletVel);
         }
