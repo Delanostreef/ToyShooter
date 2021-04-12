@@ -53,8 +53,8 @@ public class ObjectPooler : MonoBehaviour
             Debug.LogWarning("Pool with tag " + tag + " doesn't excist.");
             return null;
         }
-
         
+
 
         GameObject objectToSpawn = poolDictionary[tag].Dequeue();
 
