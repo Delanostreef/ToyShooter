@@ -32,6 +32,9 @@ public class Bullet : MonoBehaviour
             if (other.gameObject.tag == "Enemy")
             {
                 print("u hit a mf");
+
+                other.GetComponent<Enemy>().ScoreAdder(other.GetComponent<Enemy>()._scoreAmount);
+
                 Destroy(other.gameObject);
                 Destroy(this.gameObject);
             }
