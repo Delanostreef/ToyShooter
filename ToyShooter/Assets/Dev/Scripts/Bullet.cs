@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    [SerializeField] private GameObject _explosionFx;
     [SerializeField] private float _bulletForce;
     public bool _playerShooting;
     private Score _score;
@@ -36,12 +37,13 @@ public class Bullet : MonoBehaviour
         {
             if (other.gameObject.tag == "Enemy")
             {
-                _score.ScoreAdder(_score._scoreAmount);
+                _score.ScoreAdder(other.gameObject.GetComponent<Enemy>()._scoreAmount);
 
                 print(_score._currentScore);
 
-                print("u hit a mf");
+                GameObject explosionFx = Instantiate(_explosionFx, this.transform.position, Quaternion.identity);
 
+                Destroy(explosionFx, 0.5f);
                 Destroy(other.gameObject);
                 Destroy(this.gameObject);
             }

@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    
- 
+    [Header("Score")]
+    public int _scoreAmount;
+
     void Start()
     {
-        
+
     }
 
 
@@ -16,6 +17,4 @@ public class Enemy : MonoBehaviour
     {
         
     }
-
-    
 }
