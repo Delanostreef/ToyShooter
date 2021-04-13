@@ -6,7 +6,12 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField] private float _bulletForce;
     public bool _playerShooting;
+    private Score _score;
 
+    private void Start()
+    {
+        _score = FindObjectOfType<Score>();
+    }
 
     void Update()
     {
@@ -31,9 +36,11 @@ public class Bullet : MonoBehaviour
         {
             if (other.gameObject.tag == "Enemy")
             {
-                print("u hit a mf");
+                _score.ScoreAdder(_score._scoreAmount);
 
-                other.GetComponent<Enemy>().ScoreAdder(other.GetComponent<Enemy>()._scoreAmount);
+                print(_score._currentScore);
+
+                print("u hit a mf");
 
                 Destroy(other.gameObject);
                 Destroy(this.gameObject);
