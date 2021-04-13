@@ -153,7 +153,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _currentScore: 0
-  _scoreAmount: 100
 --- !u!4 &427779564
 Transform:
   m_ObjectHideFlags: 0
@@ -300,12 +299,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1345366656}
+  - component: {fileID: 1345366653}
   - component: {fileID: 1345366655}
   - component: {fileID: 1345366654}
-  - component: {fileID: 1345366653}
+  - component: {fileID: 1345366657}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -321,8 +321,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.009672667, y: 0.012540011, z: 0.010263624}
-  m_Center: {x: -0, y: -0.0009468278, z: 0}
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1345366654
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -370,6 +370,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!114 &1345366657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1345366652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19b0edd745c064e4d8cb6c7d9d2c7152, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 3
+  numberOfHearts: 0
+  hearts: []
+  fullHeart: {fileID: 0}
+  emptyHeart: {fileID: 0}
 --- !u!1 &1572934676
 GameObject:
   m_ObjectHideFlags: 0
@@ -530,7 +547,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemies:
-  - {fileID: 2649556926579169247, guid: dd292f2b338675944a780133447627bc, type: 3}
   - {fileID: 2649556926579169247, guid: 2f1948b9a88670445bea6b497fd676da, type: 3}
   - {fileID: 2649556926579169247, guid: fa2359fbe9444854dbe92b30a9cfe156, type: 3}
 --- !u!4 &2126973824

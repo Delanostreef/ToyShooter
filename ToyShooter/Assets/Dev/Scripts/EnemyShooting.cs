@@ -14,7 +14,7 @@ public class EnemyShooting : MonoBehaviour
 
     private void Start()
     {
-        InvokeRepeating("Fire", 0f, 2f);
+        InvokeRepeating("Fire", 1f, 2f);
         objectPooler = ObjectPooler.Instance;
     }
 

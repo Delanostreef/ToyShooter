@@ -27,7 +27,15 @@ public class Bullet : MonoBehaviour
             if (other.gameObject.tag == "Player")
             {
                 print("oof");
-                Destroy(other.gameObject);
+
+                Health playerHealth = other.gameObject.GetComponent<Health>();
+
+                playerHealth.health -= 1;
+
+                if (playerHealth.health == 0)
+                {
+                    Destroy(other.gameObject);
+                }
                 Destroy(this.gameObject);
             }
         }

@@ -6,7 +6,6 @@ public class Score : MonoBehaviour
 {
     [Header("Score")]
     public int _currentScore;
-    public int _scoreAmount;
 
     public void ScoreAdder(int score)
     {
