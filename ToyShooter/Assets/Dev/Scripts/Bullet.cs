@@ -34,7 +34,11 @@ public class Bullet : MonoBehaviour
 
                 if (playerHealth.health == 0)
                 {
-                    Destroy(other.gameObject);
+                    GameObject explosionFx = Instantiate(_explosionFx, this.transform.position, Quaternion.identity);
+
+                    Destroy(explosionFx, 0.5f);
+
+                    Destroy(other.gameObject, 0.1f);
                 }
                 Destroy(this.gameObject);
             }
