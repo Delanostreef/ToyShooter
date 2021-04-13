@@ -26,7 +26,7 @@ public class Bullet : MonoBehaviour
         {
             if (other.gameObject.tag == "Player")
             {
-                print("u hit yourself smh");
+                print("oof");
                 Destroy(other.gameObject);
                 Destroy(this.gameObject);
             }

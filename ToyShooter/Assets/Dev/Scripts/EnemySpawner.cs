@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject enemy = null;
+    [SerializeField] private GameObject[] enemies = null;
 
     private void Start()
     {
@@ -15,6 +15,6 @@ public class EnemySpawner : MonoBehaviour
     {
         Vector3 randomSpawnPoint = new Vector3(8f, Random.Range(-4f, 4f), 11);
 
-        Instantiate(enemy, randomSpawnPoint, enemy.transform.rotation);
+        Instantiate(enemies[Random.Range(0, enemies.Length)], randomSpawnPoint, enemies[Random.Range(0, 2)].transform.rotation);
     }
 }
