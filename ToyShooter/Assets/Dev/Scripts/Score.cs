@@ -5,10 +5,10 @@ using UnityEngine;
 public class Score : MonoBehaviour
 {
     [Header("Score")]
-    public int _currentScore;
+    public int currentScore;
 
     public void ScoreAdder(int score)
     {
-        _currentScore = _currentScore + score;
+        currentScore = currentScore + score;
     }
 }

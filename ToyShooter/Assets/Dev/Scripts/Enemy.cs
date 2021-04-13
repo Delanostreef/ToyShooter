@@ -5,7 +5,11 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [Header("Score")]
-    public int _scoreAmount;
+    public int scoreAmount;
+
+    [Header("Health")]
+    public int health;
+    public int numberOfHearts;
 
     void Start()
     {
@@ -15,6 +19,14 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        
+        EnemyHealth();
+    }
+
+    private void EnemyHealth()
+    {
+        if (health >= numberOfHearts)
+        {
+            numberOfHearts = health;
+        }
     }
 }
