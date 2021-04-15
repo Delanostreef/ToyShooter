@@ -19,6 +19,7 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
+    //spawned een enemy tussen een aangegeven tijd
     private IEnumerator SpawnEnemy(float timeToSpawn)
     {
         yield return new WaitForSeconds(timeToSpawn);
@@ -32,11 +33,13 @@ public class EnemySpawner : MonoBehaviour
         _isSpawning = false;
     }
 
+    //voegt de enemy toe aan de list
     public void AddEnemy(GameObject go)
     {
         _enemyList.Add(go);
     }
 
+    //haalt de enemy uit de list
     public void RemoveEnemy(GameObject go)
     {
         _enemyList.Remove(go);
