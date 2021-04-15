@@ -7,6 +7,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private GameObject[] _enemies = null;
     [SerializeField] private List<GameObject> _enemyList;
     [SerializeField] private int _maxEnemiesSpawned;
+    [SerializeField] private float _minSpawnTime, _maxSpawnTime;
     private bool _isSpawning = false;
 
     private void Update()
@@ -15,7 +16,7 @@ public class EnemySpawner : MonoBehaviour
         {
             _isSpawning = true;
 
-            StartCoroutine(SpawnEnemy(Random.Range(2, 5)));
+            StartCoroutine(SpawnEnemy(Random.Range(_minSpawnTime, _maxSpawnTime)));
         }
     }
 
