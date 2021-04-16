@@ -25,7 +25,7 @@ public class EnemySpawner : MonoBehaviour
     {
         yield return new WaitForSeconds(timeToSpawn);
 
-        Vector3 randomSpawnPoint = new Vector3(8f, Random.Range(-4f, 4f), 11);
+        Vector3 randomSpawnPoint = new Vector3(_enemies[0].transform.position.x, Random.Range(-4f, 4f), _enemies[0].transform.position.z);
 
         GameObject enemy = Instantiate(_enemies[Random.Range(0, _enemies.Length)], randomSpawnPoint, _enemies[Random.Range(0, _enemies.Length)].transform.rotation);
 

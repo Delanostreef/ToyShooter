@@ -16,7 +16,7 @@ public class PlayerMovement : MonoBehaviour
         (
         Mathf.Clamp(transform.position.x + (input.x * speed), lowerBounds.x, upperBounds.x),
         Mathf.Clamp(transform.position.y + (input.y * speed), lowerBounds.y, upperBounds.y),
-        11
+        transform.position.z
         );
 
         //als je omhoog en omlaag beweegt, tilt je scheepje omlaag en omhoog
