@@ -4,17 +4,45 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject enemy = null;
+    [SerializeField] private GameObject[] _enemies = null;
+    [SerializeField] private List<GameObject> _enemyList;
+    [SerializeField] private int _maxEnemiesSpawned;
+    [SerializeField] private float _minSpawnTime, _maxSpawnTime;
+    private bool _isSpawning = false;
 
-    private void Start()
+    private void Update()
     {
-        InvokeRepeating("SpawnEnemy", 3f, Random.Range(2, 5));
+        if (_enemyList.Count <= _maxEnemiesSpawned && !_isSpawning)
+        {
+            _isSpawning = true;
+
+            StartCoroutine(SpawnEnemy(Random.Range(_minSpawnTime, _maxSpawnTime)));
+        }
     }
 
-    private void SpawnEnemy()
+    //spawned een enemy tussen een aangegeven tijd
+    private IEnumerator SpawnEnemy(float timeToSpawn)
     {
-        Vector3 randomSpawnPoint = new Vector2(8f, Random.Range(-4f, 4f));
+        yield return new WaitForSeconds(timeToSpawn);
 
-        Instantiate(enemy, randomSpawnPoint, enemy.transform.rotation);
+        Vector3 randomSpawnPoint = new Vector3(8f, Random.Range(-4f, 4f), 11);
+
+        GameObject enemy = Instantiate(_enemies[Random.Range(0, _enemies.Length)], randomSpawnPoint, _enemies[Random.Range(0, _enemies.Length)].transform.rotation);
+
+        AddEnemy(enemy);
+
+        _isSpawning = false;
+    }
+
+    //voegt de enemy toe aan de list
+    public void AddEnemy(GameObject go)
+    {
+        _enemyList.Add(go);
+    }
+
+    //haalt de enemy uit de list
+    public void RemoveEnemy(GameObject go)
+    {
+        _enemyList.Remove(go);
     }
 }

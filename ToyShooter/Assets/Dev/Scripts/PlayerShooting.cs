@@ -27,7 +27,7 @@ public class PlayerShooting : MonoBehaviour
     {
         GameObject bullet = Instantiate(_pfBullet, _firePoint.position, new Quaternion(0, 0, 90, 1));
 
-        bullet.GetComponent<Bullet>()._playerShooting = true;
+        bullet.GetComponent<Bullet>().playerShooting = true;
 
         Destroy(bullet, 2f);
     }
