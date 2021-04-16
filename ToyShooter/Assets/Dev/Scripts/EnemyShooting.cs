@@ -7,6 +7,10 @@ public class EnemyShooting : MonoBehaviour
     [SerializeField]
     private float _bulletVel;
 
+    [Header("FireRate low = faster")]
+    [SerializeField]
+    private float _fireRate;
+
     [SerializeField]
     List<Transform> bulletTransforms = new List<Transform>();
 
@@ -14,7 +18,7 @@ public class EnemyShooting : MonoBehaviour
 
     private void Start()
     {
-        InvokeRepeating("Fire", 0f, 2f);
+        InvokeRepeating("Fire", 0f, _fireRate);
         objectPooler = ObjectPooler.Instance;
     }
 

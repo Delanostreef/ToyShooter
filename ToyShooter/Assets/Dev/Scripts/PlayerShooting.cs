@@ -25,7 +25,7 @@ public class PlayerShooting : MonoBehaviour
 
     private void InstantiateBullet()
     {
-        GameObject bullet = Instantiate(_pfBullet, _firePoint.position, _pfBullet.transform.rotation);
+        GameObject bullet = Instantiate(_pfBullet, _firePoint.position, new Quaternion(0, 0, 90, 1));
 
         bullet.GetComponent<Bullet>()._playerShooting = true;
 
