@@ -455,7 +455,7 @@ MonoBehaviour:
   _enemyList: []
   _maxEnemiesSpawned: 3
   _minSpawnTime: 1
-  _maxSpawnTime: 3
+  _maxSpawnTime: 2
 --- !u!4 &2126973824
 Transform:
   m_ObjectHideFlags: 0
@@ -5672,7 +5672,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b2ae3263af9abe4b9a673d37c943c83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 0.1
+  Speed: -2
 --- !u!23 &6554248355804479320
 MeshRenderer:
   m_ObjectHideFlags: 0

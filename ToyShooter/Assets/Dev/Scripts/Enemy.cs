@@ -11,6 +11,9 @@ public class Enemy : MonoBehaviour
     public int health;
     public int numberOfHearts;
 
+    [Header("Movement")]
+    [SerializeField] private float _movementSpeed;
+
     void Start()
     {
 
@@ -20,6 +23,7 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         EnemyHealth();
+        EnemyMovement();
     }
 
     private void EnemyHealth()
@@ -28,5 +32,10 @@ public class Enemy : MonoBehaviour
         {
             numberOfHearts = health;
         }
+    }
+
+    private void EnemyMovement()
+    {
+        transform.position += new Vector3(-_movementSpeed * Time.deltaTime, 0, 0);
     }
 }

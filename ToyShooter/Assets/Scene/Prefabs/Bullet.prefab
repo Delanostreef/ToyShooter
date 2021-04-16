@@ -111,8 +111,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _explosionFx: {fileID: 7922950030809725626, guid: d29478ad906e3704e82ffb7c6a5d7c3e, type: 3}
-  _bulletForce: 15
-  _playerShooting: 0
+  _bulletForce: 30
+  playerShooting: 0
 --- !u!54 &-7563700711486608529
 Rigidbody:
   m_ObjectHideFlags: 0
