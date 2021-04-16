@@ -14,8 +14,8 @@ public class PlayerMovement : MonoBehaviour
 
         transform.position = new Vector3
         (
-        Mathf.Clamp(transform.position.x + (input.x * speed), lowerBounds.x, upperBounds.x),
-        Mathf.Clamp(transform.position.y + (input.y * speed), lowerBounds.y, upperBounds.y),
+        Mathf.Clamp(transform.position.x + (input.x * speed * Time.deltaTime), lowerBounds.x, upperBounds.x),
+        Mathf.Clamp(transform.position.y + (input.y * speed * Time.deltaTime), lowerBounds.y, upperBounds.y),
         transform.position.z
         );
 
