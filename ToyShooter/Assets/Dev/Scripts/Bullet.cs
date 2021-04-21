@@ -63,7 +63,7 @@ public class Bullet : MonoBehaviour
 
                     _score.ScoreAdder(other.gameObject.GetComponent<Enemy>().scoreAmount);
 
-                    print(_score.currentScore);
+                    //print(_score.currentScore);
 
                     Destroy(explosionFx, 0.5f);
                     Destroy(other.gameObject);
