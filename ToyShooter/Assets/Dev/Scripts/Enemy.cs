@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+
     [Header("Score")]
     public int scoreAmount;
 
@@ -13,6 +14,8 @@ public class Enemy : MonoBehaviour
 
     [Header("Movement")]
     [SerializeField] private float _movementSpeed;
+    public float dirTimer;
+    private int location;
 
     void Start()
     {
@@ -23,6 +26,7 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         EnemyHealth();
+        RandomDirection();
         EnemyMovement();
     }
 
@@ -34,8 +38,29 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private void EnemyMovement()
+    private void RandomDirection()
     {
-        transform.position += new Vector3(-_movementSpeed * Time.deltaTime, 0, 0);
+        if (dirTimer > 0)
+        {
+            dirTimer = dirTimer - 1 * Time.deltaTime;
+        }
+        if (dirTimer <= 0)
+        {
+            location = Random.Range(1, -2);
+            dirTimer = 2;
+        }
+        if (transform.position.y > )
+        {
+            location = -1;
+        }
+        if (transform.position.y < -4)
+        {
+            location = 1;
+        }
     }
-}
+
+        private void EnemyMovement()
+        {
+            transform.position += new Vector3(-_movementSpeed * Time.deltaTime, location * Time.deltaTime / 2, 0);
+        }
+    }
