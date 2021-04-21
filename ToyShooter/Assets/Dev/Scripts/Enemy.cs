@@ -49,7 +49,7 @@ public class Enemy : MonoBehaviour
             location = Random.Range(1, -2);
             dirTimer = 2;
         }
-        if (transform.position.y > )
+        if (transform.position.y > 4)
         {
             location = -1;
         }
