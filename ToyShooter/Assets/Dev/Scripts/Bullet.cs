@@ -45,10 +45,10 @@ public class Bullet : MonoBehaviour
                 Health playerHealth = other.gameObject.GetComponent<Health>();
 
                 GameObject explosionFx = Instantiate(_explosionFx, this.transform.position, Quaternion.identity);
-                Destroy(explosionFx, 0.5f);
 
                 if (_invincibilityPlayer._invincibleEnabled == false)
                 {
+                    Destroy(explosionFx, 0.5f);
                     playerHealth.health -= 1;
                     _invincibilityPlayer._invincibleEnabled = true;
                 }
