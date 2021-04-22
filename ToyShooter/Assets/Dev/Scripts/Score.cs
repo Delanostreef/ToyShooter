@@ -1,15 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 
 public class Score : MonoBehaviour
 {
-    [Header("Score")]
-    public int currentScore;
-
-    public int highscore;
-    public int lastHighscore;
+    private int _currentScore;
+    private int _highscore;
+    private int _lastHighscore;
 
     [SerializeField] private TMPro.TMP_Text _lastHighscoreText;
     [SerializeField] private TMPro.TMP_Text _currentScoreText;
@@ -17,20 +12,20 @@ public class Score : MonoBehaviour
 
     private void Update()
     {
-        _currentScoreText.text = "score: " + currentScore;
+        _currentScoreText.text = "score: " + _currentScore;
         _highscoreText.text = "highscore: " + PlayerPrefs.GetInt("highscore", 0);
         _lastHighscoreText.text = "last highscore: " + PlayerPrefs.GetInt("lastHighscore", 0);
 
-        if (currentScore > PlayerPrefs.GetInt("highscore", 0))
+        if (_currentScore > PlayerPrefs.GetInt("highscore", 0))
         {
-            PlayerPrefs.SetInt("highscore", currentScore);
-            highscore = currentScore;
+            PlayerPrefs.SetInt("highscore", _currentScore);
+            _highscore = _currentScore;
         }
 
-        if (highscore > PlayerPrefs.GetInt("lastHighscore", 0))
+        if (_highscore > PlayerPrefs.GetInt("lastHighscore", 0))
         {
-            PlayerPrefs.SetInt("lastHighscore", PlayerPrefs.GetInt("highscore", highscore));
-            lastHighscore = highscore;
+            PlayerPrefs.SetInt("lastHighscore", PlayerPrefs.GetInt("highscore", _highscore));
+            _lastHighscore = _highscore;
         }
 
         print(PlayerPrefs.GetInt("lastHighscore", 0));
@@ -39,6 +34,6 @@ public class Score : MonoBehaviour
 
     public void ScoreAdder(int score)
     {
-        currentScore = currentScore + score;
+        _currentScore = _currentScore + score;
     }
 }
