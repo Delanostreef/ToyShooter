@@ -81,7 +81,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b54d30686b803a4e9afd4cbe0518e54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreAmount: 200
+  scoreAmount: 20000
   health: 2
   numberOfHearts: 2
   _movementSpeed: 4
