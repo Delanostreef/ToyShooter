@@ -12,9 +12,9 @@ public class Score : MonoBehaviour
 
     private void Update()
     {
-        _currentScoreText.text = "score: " + _currentScore;
-        _highscoreText.text = "highscore: " + PlayerPrefs.GetInt("highscore", 0);
-        _lastHighscoreText.text = "last highscore: " + PlayerPrefs.GetInt("lastHighscore", 0);
+        //  _currentScoreText.text = "score: " + _currentScore;
+        _highscoreText.text = PlayerPrefs.GetInt("highscore", 0).ToString();
+        _lastHighscoreText.text = PlayerPrefs.GetInt("lastHighscore", 0).ToString();
 
         if (_currentScore > PlayerPrefs.GetInt("highscore", 0))
         {

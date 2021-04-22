@@ -105,7 +105,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4335997446172026742}
   m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: -2.5, y: 0, z: 0}
+  m_LocalPosition: {x: -2.502, y: -0.002, z: -0.004}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children: []
   m_Father: {fileID: 8090008406711157222}
@@ -334,7 +334,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8867213166170413916}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 15, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 5756668594750010420}
@@ -368,7 +368,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bulletVel: 750
-  _fireRate: 0
+  _fireRate: 1.2
   bulletTransforms:
   - {fileID: 8705113225661319508}
 --- !u!114 &8867213166170413917
@@ -386,7 +386,7 @@ MonoBehaviour:
   scoreAmount: 500
   health: 3
   numberOfHearts: 3
-  _movementSpeed: 15
+  _movementSpeed: 6.5
   dirTimer: 0
 --- !u!1 &9159804389031363173
 GameObject:

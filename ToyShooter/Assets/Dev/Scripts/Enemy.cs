@@ -17,9 +17,11 @@ public class Enemy : MonoBehaviour
     public float dirTimer;
     private int location;
 
+    private EnemySpawner enemySpawner;
+
     void Start()
     {
-
+        enemySpawner = FindObjectOfType<EnemySpawner>();
     }
 
 
@@ -28,6 +30,7 @@ public class Enemy : MonoBehaviour
         EnemyHealth();
         RandomDirection();
         EnemyMovement();
+        DeSpawn();
     }
 
     private void EnemyHealth()
@@ -59,8 +62,17 @@ public class Enemy : MonoBehaviour
         }
     }
 
-        private void EnemyMovement()
+    private void EnemyMovement()
+    {
+        transform.position += new Vector3(-_movementSpeed * Time.deltaTime, location * Time.deltaTime / 2, 0);
+    }
+
+    private void DeSpawn()
+    {
+        if (this.transform.position.x <= -15)
         {
-            transform.position += new Vector3(-_movementSpeed * Time.deltaTime, location * Time.deltaTime / 2, 0);
+            enemySpawner.RemoveEnemy(this.gameObject);
+            Destroy(this.gameObject);
         }
     }
+}

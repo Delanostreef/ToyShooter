@@ -36,13 +36,14 @@ public class Bullet : MonoBehaviour
 
                 Health playerHealth = other.gameObject.GetComponent<Health>();
 
+                GameObject explosionFx = Instantiate(_explosionFx, this.transform.position, Quaternion.identity);
+                Destroy(explosionFx, 0.5f);
+
                 playerHealth.health -= 1;
 
                 if (playerHealth.health <= 0)
                 {
-                    GameObject explosionFx = Instantiate(_explosionFx, this.transform.position, Quaternion.identity);
 
-                    Destroy(explosionFx, 0.5f);
 
                     Destroy(other.gameObject, 0.1f);
 

@@ -27,6 +27,6 @@ public class PlayerShooting : MonoBehaviour
 
         bullet.GetComponent<Bullet>().playerShooting = true;
 
-        Destroy(bullet, 5f);
+        Destroy(bullet, 2f);
     }
 }
