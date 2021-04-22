@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Bullet : MonoBehaviour
+public class Bullet : ObjectPooler
 {
     [SerializeField] private GameObject _explosionFx;
     [SerializeField] private float _bulletForce;
@@ -45,10 +45,10 @@ public class Bullet : MonoBehaviour
                 Health playerHealth = other.gameObject.GetComponent<Health>();
 
                 GameObject explosionFx = Instantiate(_explosionFx, this.transform.position, Quaternion.identity);
+                Destroy(explosionFx, 0.5f);
 
                 if (_invincibilityPlayer._invincibleEnabled == false)
                 {
-                    Destroy(explosionFx, 0.5f);
                     playerHealth.health -= 1;
                     _invincibilityPlayer._invincibleEnabled = true;
                 }
@@ -59,36 +59,46 @@ public class Bullet : MonoBehaviour
 
                     SceneManager.LoadScene("End Screen");
                 }
-                Destroy(this.gameObject);
-            }
-        }
 
-        //als de player shoot
-        if (playerShooting)
-        {
-            transform.position += transform.right * _bulletForce * Time.deltaTime;
-            if (other.gameObject.tag == "Enemy")
-            {
-                Enemy enemy = other.gameObject.GetComponent<Enemy>();
-
-                enemy.health -= 1;
-                GameObject explosionFx = Instantiate(_explosionFx, this.transform.position, Quaternion.identity);
-                Destroy(explosionFx, 0.5f);
-
-                if (enemy.health <= 0)
+                if (other.gameObject.tag == "OutOfBounds")
                 {
-                    _enemySpawner.RemoveEnemy(enemy.gameObject);
-
-                    _manager.bossCountDown -= 1;
-
-                    _score.ScoreAdder(other.gameObject.GetComponent<Enemy>().scoreAmount);
-
-                    Destroy(enemy);
-                    Destroy(other.gameObject);
-
+                    if (gameObject.tag == "EnemyBullet")
+                    {
+                        gameObject.SetActive(false);
+                    }
                 }
-                Destroy(this.gameObject);
+
+                //als de player shoot
+                if (playerShooting)
+                {
+                    transform.position += transform.right * _bulletForce * Time.deltaTime;
+                    if (other.gameObject.tag == "Enemy")
+                    {
+                        Enemy enemy = other.gameObject.GetComponent<Enemy>();
+
+                        enemy.health -= 1;
+                        GameObject explosionFx = Instantiate(_explosionFx, this.transform.position, Quaternion.identity);
+                        Destroy(explosionFx, 0.5f);
+
+                        if (enemy.health <= 0)
+                        {
+                            _enemySpawner.RemoveEnemy(enemy.gameObject);
+
+                            _manager.bossCountDown -= 1;
+
+                            _score.ScoreAdder(other.gameObject.GetComponent<Enemy>().scoreAmount);
+
+                            Destroy(enemy);
+                            Destroy(other.gameObject);
+
+                        }
+                        Destroy(this.gameObject);
+                    }
+                }
             }
         }
     }
 }
+
+
+
