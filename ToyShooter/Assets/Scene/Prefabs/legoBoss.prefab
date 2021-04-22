@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1444732325782827040}
+  - component: {fileID: 1515594336276212548}
+  - component: {fileID: 3561570221094374029}
   m_Layer: 0
   m_Name: legoBoss
   m_TagString: Untagged
@@ -32,6 +34,35 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!114 &1515594336276212548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2253885354434063002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ff166eb75c94784db44e5f33cb89317, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 20
+  numberOfHearts: 20
+--- !u!114 &3561570221094374029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2253885354434063002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b39d5c8e4ac830f4cb75f05f5cc04bff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bulletVel: 0
+  _fireRate: 0
+  bulletTransforms: []
 --- !u!1 &7732806586764433371
 GameObject:
   m_ObjectHideFlags: 0

@@ -24,15 +24,18 @@ public class Manager : MonoBehaviour
         if (bossCountDown <= 0)
         {
             SpawnBoss();
-            
+            _enemySpawner.enabled = false;
+        }
+
+        if (bossCountDown > 0)
+        {
+            _enemySpawner.enabled = true;
         }
     }
 
     private void SpawnBoss()
     {
         GameObject boss = Instantiate(_boss, _boss.transform.position, _boss.transform.rotation);
-
         _enemySpawner.RemoveAllEnemies();
-        _enemySpawner.enabled = false;
     }
 }

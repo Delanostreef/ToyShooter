@@ -5,6 +5,10 @@ using UnityEngine;
 public class Boss : MonoBehaviour
 {
     private Manager _manager;
+    private int bossesKilled;
+
+    public int health;
+    public int numberOfHearts;
     void Start()
     {
         _manager = FindObjectOfType<Manager>();
@@ -12,17 +16,19 @@ public class Boss : MonoBehaviour
 
     void Update()
     {
-        //if (_manager.bossCountDown < 1)
-        //{
-        //    SpawnBoss();
-        //}
-        
+        Health();
+        Behaviour();
+        OnDeath();
     }
 
-    private void SpawnBoss()
+    private void Health()
     {
-
+        if (health > numberOfHearts)
+        {
+            health = numberOfHearts;
+        }
     }
+
 
     private void Behaviour()
     {
@@ -31,6 +37,11 @@ public class Boss : MonoBehaviour
 
     private void OnDeath()
     {
-         
+        if (health <= 0)
+        {
+            bossesKilled += 1;
+            _manager.bossCountDown = 25 + (bossesKilled * 5);
+            Destroy(this.gameObject);
+        }
     }
 }
