@@ -11,19 +11,25 @@ public class Bullet : MonoBehaviour
     private Score _score;
     private EnemySpawner _enemySpawner;
     private Manager _manager;
+    private InvincibilityPlayer _invincibilityPlayer;
+
+    private float _timer;
+    private float _timeSpeed = 5f;
+    private bool _invincibleEnabled;
 
     private void Start()
     {
         _score = FindObjectOfType<Score>();
         _enemySpawner = FindObjectOfType<EnemySpawner>();
         _manager = FindObjectOfType<Manager>();
+        _invincibilityPlayer = FindObjectOfType<InvincibilityPlayer>();
     }
 
     void Update()
     {
         if (playerShooting)
         {
-        transform.position += transform.right * _bulletForce * Time.deltaTime;
+            transform.position += transform.right * _bulletForce * Time.deltaTime;
         }
     }
 
@@ -41,12 +47,14 @@ public class Bullet : MonoBehaviour
                 GameObject explosionFx = Instantiate(_explosionFx, this.transform.position, Quaternion.identity);
                 Destroy(explosionFx, 0.5f);
 
-                playerHealth.health -= 1;
+                if (_invincibilityPlayer._invincibleEnabled == false)
+                {
+                    playerHealth.health -= 1;
+                    _invincibilityPlayer._invincibleEnabled = true;
+                }
 
                 if (playerHealth.health <= 0)
                 {
-
-
                     Destroy(other.gameObject, 0.1f);
 
                     SceneManager.LoadScene("End Screen");
@@ -75,11 +83,9 @@ public class Bullet : MonoBehaviour
 
                     _score.ScoreAdder(other.gameObject.GetComponent<Enemy>().scoreAmount);
 
-                    //print(_score.currentScore);
-
                     Destroy(enemy);
                     Destroy(other.gameObject);
-                    
+
                 }
                 Destroy(this.gameObject);
             }

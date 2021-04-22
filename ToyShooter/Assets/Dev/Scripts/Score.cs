@@ -1,3 +1,4 @@
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class Score : MonoBehaviour
@@ -16,18 +17,28 @@ public class Score : MonoBehaviour
         _highscoreText.text = PlayerPrefs.GetInt("highscore", 0).ToString();
         _lastHighscoreText.text = PlayerPrefs.GetInt("lastHighscore").ToString();
 
-
-        if (_currentScore >= PlayerPrefs.GetInt("highscore", 0))
+        if (SceneManager.GetActiveScene().buildIndex == 0 && _currentScore >= PlayerPrefs.GetInt("highscore", 0))
         {
             PlayerPrefs.SetInt("highscore", _currentScore);
-            PlayerPrefs.SetInt("lastHighscore", _currentScore);
         }
-        else
+        if (SceneManager.GetActiveScene().buildIndex == 0 && _currentScore < PlayerPrefs.GetInt("highscore", 0))
         {
             PlayerPrefs.SetInt("lastHighscore", _currentScore);
         }
 
-        print(PlayerPrefs.GetInt("lastHighscore", 0));
+        //print(_currentScore);
+        //print(PlayerPrefs.GetInt("lastHighscore", 0));  
+
+        //if (_currentScore >= PlayerPrefs.GetInt("highscore", 0))
+        //{
+        //    PlayerPrefs.SetInt("highscore", _currentScore);
+        //    PlayerPrefs.SetInt("lastHighscore", _currentScore);
+        //}
+        //else
+        //{
+        //    PlayerPrefs.SetInt("lastHighscore", _currentScore);
+        //}
+
 
     }
 
