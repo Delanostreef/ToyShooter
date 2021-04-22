@@ -14,6 +14,25 @@ public class Boss : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (bossCountDown <= 1)
+        {
+            SpawnBoss();
+        }
         
+    }
+
+    private void SpawnBoss()
+    {
+
+    }
+
+    private void Behaviour()
+    {
+
+    }
+
+    private void OnDeath()
+    {
+         
     }
 }

@@ -10,11 +10,13 @@ public class Bullet : MonoBehaviour
     public bool playerShooting;
     private Score _score;
     private EnemySpawner _enemySpawner;
+    private Boss _boss;
 
     private void Start()
     {
         _score = FindObjectOfType<Score>();
         _enemySpawner = FindObjectOfType<EnemySpawner>();
+        _boss = FindObjectOfType<Boss>();
     }
 
     void Update()
@@ -69,6 +71,7 @@ public class Bullet : MonoBehaviour
                 {
                     _enemySpawner.RemoveEnemy(enemy.gameObject);
 
+                    _boss.bossCountDown =- 1;
 
                     //_score.ScoreAdder(other.gameObject.GetComponent<Enemy>().scoreAmount);
 
