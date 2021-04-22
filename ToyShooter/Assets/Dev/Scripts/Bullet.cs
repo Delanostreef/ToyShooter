@@ -73,7 +73,7 @@ public class Bullet : MonoBehaviour
 
                     _manager.bossCountDown -= 1;
 
-                    //_score.ScoreAdder(other.gameObject.GetComponent<Enemy>().scoreAmount);
+                    _score.ScoreAdder(other.gameObject.GetComponent<Enemy>().scoreAmount);
 
                     //print(_score.currentScore);
 
