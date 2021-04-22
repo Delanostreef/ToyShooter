@@ -20,6 +20,6 @@ public class PlayerMovement : MonoBehaviour
         );
 
         //als je omhoog en omlaag beweegt, tilt je scheepje omlaag en omhoog
-        transform.eulerAngles = new Vector3(tiltAngle * Input.GetAxis("Vertical"), 0 ,90);
+        transform.eulerAngles = new Vector3(0, 90,tiltAngle * Input.GetAxis("Vertical"));
     }
 }

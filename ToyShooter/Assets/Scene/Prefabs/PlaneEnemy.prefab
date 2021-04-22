@@ -334,7 +334,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8867213166170413916}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 32, y: 0, z: 25}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 5756668594750010420}
@@ -384,9 +384,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreAmount: 500
-  health: 0
-  numberOfHearts: 0
+  health: 3
+  numberOfHearts: 3
   _movementSpeed: 15
+  dirTimer: 0
 --- !u!1 &9159804389031363173
 GameObject:
   m_ObjectHideFlags: 0

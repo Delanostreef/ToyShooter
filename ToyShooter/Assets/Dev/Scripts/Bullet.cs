@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Bullet : MonoBehaviour
 {
@@ -18,7 +19,10 @@ public class Bullet : MonoBehaviour
 
     void Update()
     {
-        transform.position += transform.up * _bulletForce * Time.deltaTime;
+        if (playerShooting)
+        {
+        transform.position += transform.right * _bulletForce * Time.deltaTime;
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -41,6 +45,8 @@ public class Bullet : MonoBehaviour
                     Destroy(explosionFx, 0.5f);
 
                     Destroy(other.gameObject, 0.1f);
+
+                    SceneManager.LoadScene("End Screen");
                 }
                 Destroy(this.gameObject);
             }
@@ -49,24 +55,27 @@ public class Bullet : MonoBehaviour
         //als de player shoot
         if (playerShooting)
         {
+            transform.position += transform.right * _bulletForce * Time.deltaTime;
             if (other.gameObject.tag == "Enemy")
             {
                 Enemy enemy = other.gameObject.GetComponent<Enemy>();
 
                 enemy.health -= 1;
+                GameObject explosionFx = Instantiate(_explosionFx, this.transform.position, Quaternion.identity);
+                Destroy(explosionFx, 0.5f);
 
                 if (enemy.health <= 0)
                 {
                     _enemySpawner.RemoveEnemy(enemy.gameObject);
 
-                    GameObject explosionFx = Instantiate(_explosionFx, this.transform.position, Quaternion.identity);
 
-                    _score.ScoreAdder(other.gameObject.GetComponent<Enemy>().scoreAmount);
+                    //_score.ScoreAdder(other.gameObject.GetComponent<Enemy>().scoreAmount);
 
                     //print(_score.currentScore);
 
-                    Destroy(explosionFx, 0.5f);
+                    Destroy(enemy);
                     Destroy(other.gameObject);
+                    
                 }
                 Destroy(this.gameObject);
             }

@@ -12,8 +12,6 @@ public class PlayerShooting : MonoBehaviour
 
     void Update()
     {
-        //hiermee blijft de firepoint in het midden en draait het niet mee met het schip zelf zodra het schip tilt
-        _firePoint.rotation = Quaternion.Euler(0, 0, transform.rotation.z * -1f);
 
         if (Input.GetKey(KeyCode.Space) && Time.time >= _timeStamp)
         {
