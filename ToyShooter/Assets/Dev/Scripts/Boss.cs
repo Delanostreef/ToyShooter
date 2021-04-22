@@ -10,13 +10,12 @@ public class Boss : MonoBehaviour
         _manager = FindObjectOfType<Manager>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (_manager.bossCountDown <= 1)
-        {
-            SpawnBoss();
-        }
+        //if (_manager.bossCountDown < 1)
+        //{
+        //    SpawnBoss();
+        //}
         
     }
 

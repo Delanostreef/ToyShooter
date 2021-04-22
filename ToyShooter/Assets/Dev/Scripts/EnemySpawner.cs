@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] private GameObject[] _enemies = null;
-    [SerializeField] private List<GameObject> _enemyList;
+    [SerializeField] public List<GameObject> _enemyList;
     [SerializeField] private int _maxEnemiesSpawned;
     [SerializeField] private float _minSpawnTime, _maxSpawnTime;
     private bool _isSpawning = false;
@@ -45,5 +45,19 @@ public class EnemySpawner : MonoBehaviour
     public void RemoveEnemy(GameObject go)
     {
         _enemyList.Remove(go);
+    }
+
+    //haalt alle enemies uit de lijst
+    public void RemoveAllEnemies() 
+    {
+        for (int i = 0; i < _enemyList.Count; i++)
+        {
+            if (_enemyList[i] != null)
+            {
+                Destroy(_enemyList[i]);
+            }
+        }
+
+        _enemyList.Clear();
     }
 }

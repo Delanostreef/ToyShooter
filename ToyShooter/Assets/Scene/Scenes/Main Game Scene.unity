@@ -1336,7 +1336,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2387a989982aa9b4a87c7814f93e8cef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bossCountDown: 25
+  bossCountDown: 2
+  _boss: {fileID: 2253885354434063002, guid: 2b99ab19e1258734db42f5b9cdf3b0d1, type: 3}
+  _enemySpawner: {fileID: 1532299018}
   bossSpawn: {fileID: 1206489342}
 --- !u!1 &2011590874
 GameObject:
@@ -4665,6 +4667,7 @@ GameObject:
   - component: {fileID: 2166582358068777749}
   - component: {fileID: 2166582358068777751}
   - component: {fileID: 2166582358068777752}
+  - component: {fileID: 2166582358068777753}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -4737,6 +4740,19 @@ MonoBehaviour:
   - {fileID: 1827452442}
   fullHeart: {fileID: -5185649437945853404, guid: 9355fdde130becf4d9cff3d8f6a31c58, type: 3}
   emptyHeart: {fileID: 3173719682136373322, guid: 9355fdde130becf4d9cff3d8f6a31c58, type: 3}
+--- !u!114 &2166582358068777753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2166582358068777748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5ea5dac5f75fb34cb7c453b2e12f1a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _invincibleEnabled: 0
 --- !u!1 &2217616690640671773
 GameObject:
   m_ObjectHideFlags: 0

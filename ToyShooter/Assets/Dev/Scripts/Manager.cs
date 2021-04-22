@@ -8,18 +8,31 @@ public class Manager : MonoBehaviour
     [Header("Enemies Before Boss Spawns")]
     public int bossCountDown;
 
+
+    [Header("Boss")]
+    [SerializeField] private GameObject _boss;
+    [SerializeField] private EnemySpawner _enemySpawner;
+
     [Header("Text")]
     [SerializeField]
     private TextMeshProUGUI bossSpawn;
 
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
     void Update()
     {
         bossSpawn.text = ("Boss In: " + bossCountDown);
+
+        if (bossCountDown <= 0)
+        {
+            SpawnBoss();
+            
+        }
+    }
+
+    private void SpawnBoss()
+    {
+        GameObject boss = Instantiate(_boss, _boss.transform.position, _boss.transform.rotation);
+
+        _enemySpawner.RemoveAllEnemies();
+        _enemySpawner.enabled = false;
     }
 }
