@@ -4,17 +4,16 @@ using UnityEngine;
 
 public class Boss : MonoBehaviour
 {
-    [Header("Enemies Before Boss Spawns")]
-    public int bossCountDown;
+    private Manager _manager;
     void Start()
     {
-        
+        _manager = FindObjectOfType<Manager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (bossCountDown <= 1)
+        if (_manager.bossCountDown <= 1)
         {
             SpawnBoss();
         }
