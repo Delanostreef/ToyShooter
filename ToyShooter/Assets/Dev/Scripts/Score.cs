@@ -17,11 +17,11 @@ public class Score : MonoBehaviour
         _highscoreText.text = PlayerPrefs.GetInt("highscore", 0).ToString();
         _lastHighscoreText.text = PlayerPrefs.GetInt("lastHighscore").ToString();
 
-        if (SceneManager.GetActiveScene().buildIndex == 0 && _currentScore >= PlayerPrefs.GetInt("highscore", 0))
+        if (SceneManager.GetActiveScene().buildIndex == 1 && _currentScore >= PlayerPrefs.GetInt("highscore", 0))
         {
             PlayerPrefs.SetInt("highscore", _currentScore);
         }
-        if (SceneManager.GetActiveScene().buildIndex == 0 && _currentScore < PlayerPrefs.GetInt("highscore", 0))
+        if (SceneManager.GetActiveScene().buildIndex == 1 && _currentScore < PlayerPrefs.GetInt("highscore", 0))
         {
             PlayerPrefs.SetInt("lastHighscore", _currentScore);
         }

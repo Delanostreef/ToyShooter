@@ -17,6 +17,8 @@ public class Boss : MonoBehaviour
     private float _timeElapsedShooting;
     private float _timerShooting;
 
+    [HideInInspector] public int _amountPoints = 1000;
+
     [SerializeField] private Vector2 _movementSpeed;
 
     void Start()
@@ -64,10 +66,12 @@ public class Boss : MonoBehaviour
 
     private void OnDeath()
     {
+        int killsBeforeSpawn = 25;
+
         if (health <= 0)
         {
             bossesKilled += 1;
-            _manager.bossCountDown = 25 + (bossesKilled * 5);
+            _manager.bossCountDown = killsBeforeSpawn + (bossesKilled * 5);
             Destroy(this.gameObject);
         }
     }
