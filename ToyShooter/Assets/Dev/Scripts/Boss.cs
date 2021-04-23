@@ -17,6 +17,8 @@ public class Boss : MonoBehaviour
     private float _timeElapsedShooting;
     private float _timerShooting;
 
+    [HideInInspector] public int _amountPoints = 1000;
+
     [SerializeField] private Vector2 _movementSpeed;
 
     void Start()

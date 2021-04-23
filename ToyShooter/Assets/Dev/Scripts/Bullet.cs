@@ -29,7 +29,7 @@ public class Bullet : MonoBehaviour
     {
         if (playerShooting)
         {
-            transform.position += transform.right * _bulletForce * Time.deltaTime;
+            transform.position += transform.up * _bulletForce * Time.deltaTime;
         }
     }
 
@@ -76,7 +76,7 @@ public class Bullet : MonoBehaviour
         //als de player shoot
         if (playerShooting)
         {
-            transform.position += transform.right * _bulletForce * Time.deltaTime;
+            //transform.position += -transform.forward * _bulletForce * Time.deltaTime;
             if (other.gameObject.tag == "Enemy")
             {
                 Enemy enemy = other.gameObject.GetComponent<Enemy>();
@@ -107,6 +107,8 @@ public class Bullet : MonoBehaviour
                 Boss boss = other.gameObject.GetComponent<Boss>();
 
                 boss.health -= 1;
+
+                _score.ScoreAdder(boss._amountPoints);
 
                 GameObject explosion = Instantiate(_explosionFx, this.transform.position, Quaternion.identity);
                 Destroy(explosion, 0.5f);
