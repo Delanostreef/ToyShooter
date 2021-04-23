@@ -27,6 +27,12 @@ public class Manager : MonoBehaviour
             print("disabled");
         }
 
+        if (_enemySpawner.enabled == false)
+        {
+            _enemySpawner.RemoveAllEnemies();
+        }
+
+
         if (bossCountDown > 0)
         {
             _enemySpawner.enabled = true;
@@ -38,6 +44,5 @@ public class Manager : MonoBehaviour
     {
         Instantiate(_boss, new Vector3(16, 0, 0), _boss.transform.rotation);
         _enemySpawner.enabled = false;
-        _enemySpawner.RemoveAllEnemies();
     }
 }

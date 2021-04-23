@@ -7,11 +7,15 @@ public class Boss : MonoBehaviour
     private Manager _manager;
     private int bossesKilled;
 
+    [Header("Health")]
     public int health;
     public int numberOfHearts;
 
     private float _timeElapsed;
     private float _timer;
+
+    private float _timeElapsedShooting;
+    private float _timerShooting;
 
     [SerializeField] private Vector2 _movementSpeed;
 
@@ -35,12 +39,9 @@ public class Boss : MonoBehaviour
         }
     }
 
-
     private void Behaviour()
     {
         _timeElapsed += Time.deltaTime;
-
-        //_timer = 2f;
 
         transform.position = new Vector3(transform.position.x, Mathf.Clamp(transform.position.y, -3, 4), transform.position.z);
 
@@ -50,16 +51,15 @@ public class Boss : MonoBehaviour
 
             _timer = Random.Range(1, 5);
 
-            _movementSpeed *= -1;
+            _movementSpeed.y *= -1;
         }
 
         if (transform.position.x >= 6)
         {
-            transform.position += new Vector3(_movementSpeed.x * Time.deltaTime, 0, 0);
+            transform.position += new Vector3(-_movementSpeed.x * Time.deltaTime, 0, 0);
         }
 
         transform.position += new Vector3(0, _movementSpeed.y * Time.deltaTime, 0);
-
     }
 
     private void OnDeath()

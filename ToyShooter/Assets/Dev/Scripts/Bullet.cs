@@ -101,6 +101,18 @@ public class Bullet : MonoBehaviour
                 }
                 Destroy(this.gameObject);
             }
+
+            if (other.gameObject.tag == "Boss")
+            {
+                Boss boss = other.gameObject.GetComponent<Boss>();
+
+                boss.health -= 1;
+
+                GameObject explosion = Instantiate(_explosionFx, this.transform.position, Quaternion.identity);
+                Destroy(explosion, 0.5f);
+                Destroy(this.gameObject);
+
+            }
         }
 
         if (other.gameObject.tag == "OutOfBounds")
