@@ -25,7 +25,7 @@ public class EnemySpawner : MonoBehaviour
     private IEnumerator SpawnEnemy(float timeToSpawn)
     {
         yield return new WaitForSeconds(timeToSpawn);
-        print("enemy spawned");
+        //print("enemy spawned");
 
         Vector3 randomSpawnPoint = new Vector3(_enemies[0].transform.position.x, Random.Range(-3.5f, 5.5f), _enemies[0].transform.position.z);
 

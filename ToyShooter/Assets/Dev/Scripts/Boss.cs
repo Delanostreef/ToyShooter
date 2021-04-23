@@ -13,7 +13,7 @@ public class Boss : MonoBehaviour
     private float _timeElapsed;
     private float _timer;
 
-    [SerializeField] private float _movementSpeed;
+    [SerializeField] private Vector2 _movementSpeed;
 
     void Start()
     {
@@ -40,9 +40,9 @@ public class Boss : MonoBehaviour
     {
         _timeElapsed += Time.deltaTime;
 
-        _timer = 2f;
+        //_timer = 2f;
 
-        transform.position = new Vector3(0, Mathf.Clamp(transform.position.y, -3, 4), 0);
+        transform.position = new Vector3(transform.position.x, Mathf.Clamp(transform.position.y, -3, 4), transform.position.z);
 
         if (_timeElapsed >= _timer)
         {
@@ -53,6 +53,12 @@ public class Boss : MonoBehaviour
             _movementSpeed *= -1;
         }
 
+        if (transform.position.x >= 6)
+        {
+            transform.position += new Vector3(_movementSpeed.x * Time.deltaTime, 0, 0);
+        }
+
+        transform.position += new Vector3(0, _movementSpeed.y * Time.deltaTime, 0);
 
     }
 

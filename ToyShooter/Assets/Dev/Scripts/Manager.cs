@@ -24,18 +24,20 @@ public class Manager : MonoBehaviour
         if (bossCountDown <= 0 && _enemySpawner.enabled == true)
         {
             SpawnBoss();
+            print("disabled");
         }
 
         if (bossCountDown > 0)
         {
             _enemySpawner.enabled = true;
+            print("enabled");
         }
     }
 
     private void SpawnBoss()
     {
+        Instantiate(_boss, new Vector3(16, 0, 0), _boss.transform.rotation);
         _enemySpawner.enabled = false;
         _enemySpawner.RemoveAllEnemies();
-        GameObject boss = Instantiate(_boss, this.transform.position, _boss.transform.rotation);
     }
 }
