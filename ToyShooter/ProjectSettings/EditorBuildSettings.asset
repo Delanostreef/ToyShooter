@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scene/Scenes/Tijani.unity
-    guid: 0cae9d59efba5bb4885aef09fa4b1a00
+    path: Assets/Scene/Scenes/Begin Scene.unity
+    guid: 87ecda6ecd358a4489ecfbc5bf19df87
+  - enabled: 1
+    path: Assets/Scene/Scenes/Main Game Scene.unity
+    guid: cb396b833cdca1a4d802d8303c26ce3b
+  - enabled: 1
+    path: Assets/Scene/Scenes/End Screen.unity
+    guid: fd51cbc7ac4f28f4cb2988b417268ff5
   m_configObjects: {}

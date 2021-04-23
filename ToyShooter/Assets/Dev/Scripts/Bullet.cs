@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Bullet : MonoBehaviour
 {
@@ -9,16 +10,27 @@ public class Bullet : MonoBehaviour
     public bool playerShooting;
     private Score _score;
     private EnemySpawner _enemySpawner;
+    private Manager _manager;
+    private InvincibilityPlayer _invincibilityPlayer;
+
+    private float _timer;
+    private float _timeSpeed = 5f;
+    private bool _invincibleEnabled;
 
     private void Start()
     {
         _score = FindObjectOfType<Score>();
         _enemySpawner = FindObjectOfType<EnemySpawner>();
+        _manager = FindObjectOfType<Manager>();
+        _invincibilityPlayer = FindObjectOfType<InvincibilityPlayer>();
     }
 
     void Update()
     {
-        transform.position += transform.up * _bulletForce * Time.deltaTime;
+        if (playerShooting)
+        {
+            transform.position += transform.up * _bulletForce * Time.deltaTime;
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -32,44 +44,85 @@ public class Bullet : MonoBehaviour
 
                 Health playerHealth = other.gameObject.GetComponent<Health>();
 
-                playerHealth.health -= 1;
+                GameObject explosionFx = Instantiate(_explosionFx, this.transform.position, Quaternion.identity);
+                Destroy(explosionFx, 0.5f);
+
+                this.gameObject.SetActive(false);
+
+                if (_invincibilityPlayer._invincibleEnabled == false)
+                {
+                    playerHealth.health -= 1;
+                    _invincibilityPlayer._invincibleEnabled = true;
+                }
 
                 if (playerHealth.health <= 0)
                 {
-                    GameObject explosionFx = Instantiate(_explosionFx, this.transform.position, Quaternion.identity);
-
-                    Destroy(explosionFx, 0.5f);
-
                     Destroy(other.gameObject, 0.1f);
+
+                    SceneManager.LoadScene("End Screen");
                 }
-                Destroy(this.gameObject);
+
+                if (other.gameObject.tag == "OutOfBounds")
+                {
+                    if (gameObject.tag == "EnemyBullet")
+                    {
+                        gameObject.SetActive(false);
+                    }
+                }
+
             }
         }
 
         //als de player shoot
         if (playerShooting)
         {
+            //transform.position += -transform.forward * _bulletForce * Time.deltaTime;
             if (other.gameObject.tag == "Enemy")
             {
                 Enemy enemy = other.gameObject.GetComponent<Enemy>();
 
                 enemy.health -= 1;
+                GameObject explosion = Instantiate(_explosionFx, this.transform.position, Quaternion.identity);
+                Destroy(explosion, 0.5f);
+
+                this.gameObject.SetActive(false);
 
                 if (enemy.health <= 0)
                 {
                     _enemySpawner.RemoveEnemy(enemy.gameObject);
 
-                    GameObject explosionFx = Instantiate(_explosionFx, this.transform.position, Quaternion.identity);
+                    _manager.bossCountDown -= 1;
 
                     _score.ScoreAdder(other.gameObject.GetComponent<Enemy>().scoreAmount);
 
-                    print(_score.currentScore);
-
-                    Destroy(explosionFx, 0.5f);
+                    Destroy(enemy);
                     Destroy(other.gameObject);
+
                 }
                 Destroy(this.gameObject);
             }
+
+            if (other.gameObject.tag == "Boss")
+            {
+                Boss boss = other.gameObject.GetComponent<Boss>();
+
+                boss.health -= 1;
+
+                _score.ScoreAdder(boss._amountPoints);
+
+                GameObject explosion = Instantiate(_explosionFx, this.transform.position, Quaternion.identity);
+                Destroy(explosion, 0.5f);
+                Destroy(this.gameObject);
+
+            }
+        }
+
+        if (other.gameObject.tag == "OutOfBounds")
+        {
+            this.gameObject.SetActive(false);
         }
     }
 }
+
+
+
