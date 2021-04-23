@@ -1380,7 +1380,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2387a989982aa9b4a87c7814f93e8cef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bossCountDown: 2
+  bossCountDown: 25
   _boss: {fileID: 2253885354434063002, guid: 2b99ab19e1258734db42f5b9cdf3b0d1, type: 3}
   _enemySpawner: {fileID: 1532299018}
   bossSpawn: {fileID: 1206489342}

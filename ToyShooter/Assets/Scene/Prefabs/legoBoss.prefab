@@ -112,8 +112,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ff166eb75c94784db44e5f33cb89317, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 2
-  numberOfHearts: 2
+  health: 20
+  numberOfHearts: 20
   _movementSpeed: {x: 5, y: 1}
 --- !u!114 &3561570221094374029
 MonoBehaviour:
