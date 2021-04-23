@@ -9,6 +9,12 @@ public class Boss : MonoBehaviour
 
     public int health;
     public int numberOfHearts;
+
+    private float _timeElapsed;
+    private float _timer;
+
+    [SerializeField] private float _movementSpeed;
+
     void Start()
     {
         _manager = FindObjectOfType<Manager>();
@@ -32,6 +38,21 @@ public class Boss : MonoBehaviour
 
     private void Behaviour()
     {
+        _timeElapsed += Time.deltaTime;
+
+        _timer = 2f;
+
+        transform.position = new Vector3(0, Mathf.Clamp(transform.position.y, -3, 4), 0);
+
+        if (_timeElapsed >= _timer)
+        {
+            _timeElapsed = 0;
+
+            _timer = Random.Range(1, 5);
+
+            _movementSpeed *= -1;
+        }
+
 
     }
 

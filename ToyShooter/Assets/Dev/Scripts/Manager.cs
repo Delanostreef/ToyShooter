@@ -21,10 +21,9 @@ public class Manager : MonoBehaviour
     {
         bossSpawn.text = ("Boss In: " + bossCountDown);
 
-        if (bossCountDown <= 0)
+        if (bossCountDown <= 0 && _enemySpawner.enabled == true)
         {
             SpawnBoss();
-            _enemySpawner.enabled = false;
         }
 
         if (bossCountDown > 0)
@@ -35,7 +34,8 @@ public class Manager : MonoBehaviour
 
     private void SpawnBoss()
     {
-        GameObject boss = Instantiate(_boss, _boss.transform.position, _boss.transform.rotation);
+        _enemySpawner.enabled = false;
         _enemySpawner.RemoveAllEnemies();
+        GameObject boss = Instantiate(_boss, this.transform.position, _boss.transform.rotation);
     }
 }

@@ -113,6 +113,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 20
   numberOfHearts: 20
+  _movementSpeed: 5
 --- !u!114 &3561570221094374029
 MonoBehaviour:
   m_ObjectHideFlags: 0

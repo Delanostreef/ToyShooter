@@ -68,33 +68,34 @@ public class Bullet : ObjectPooler
                     }
                 }
 
-                //als de player shoot
-                if (playerShooting)
+            }
+        }
+
+        //als de player shoot
+        if (playerShooting)
+        {
+            transform.position += transform.right * _bulletForce * Time.deltaTime;
+            if (other.gameObject.tag == "Enemy")
+            {
+                Enemy enemy = other.gameObject.GetComponent<Enemy>();
+
+                enemy.health -= 1;
+                GameObject explosion = Instantiate(_explosionFx, this.transform.position, Quaternion.identity);
+                Destroy(explosion, 0.5f);
+
+                if (enemy.health <= 0)
                 {
-                    transform.position += transform.right * _bulletForce * Time.deltaTime;
-                    if (other.gameObject.tag == "Enemy")
-                    {
-                        Enemy enemy = other.gameObject.GetComponent<Enemy>();
+                    _enemySpawner.RemoveEnemy(enemy.gameObject);
 
-                        enemy.health -= 1;
-                        GameObject explosionFx = Instantiate(_explosionFx, this.transform.position, Quaternion.identity);
-                        Destroy(explosionFx, 0.5f);
+                    _manager.bossCountDown -= 1;
 
-                        if (enemy.health <= 0)
-                        {
-                            _enemySpawner.RemoveEnemy(enemy.gameObject);
+                    _score.ScoreAdder(other.gameObject.GetComponent<Enemy>().scoreAmount);
 
-                            _manager.bossCountDown -= 1;
+                    Destroy(enemy);
+                    Destroy(other.gameObject);
 
-                            _score.ScoreAdder(other.gameObject.GetComponent<Enemy>().scoreAmount);
-
-                            Destroy(enemy);
-                            Destroy(other.gameObject);
-
-                        }
-                        Destroy(this.gameObject);
-                    }
                 }
+                Destroy(this.gameObject);
             }
         }
     }
