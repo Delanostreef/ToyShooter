@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Bullet : ObjectPooler
+public class Bullet : MonoBehaviour
 {
     [SerializeField] private GameObject _explosionFx;
     [SerializeField] private float _bulletForce;
@@ -47,6 +47,8 @@ public class Bullet : ObjectPooler
                 GameObject explosionFx = Instantiate(_explosionFx, this.transform.position, Quaternion.identity);
                 Destroy(explosionFx, 0.5f);
 
+                this.gameObject.SetActive(false);
+
                 if (_invincibilityPlayer._invincibleEnabled == false)
                 {
                     playerHealth.health -= 1;
@@ -83,6 +85,8 @@ public class Bullet : ObjectPooler
                 GameObject explosion = Instantiate(_explosionFx, this.transform.position, Quaternion.identity);
                 Destroy(explosion, 0.5f);
 
+                this.gameObject.SetActive(false);
+
                 if (enemy.health <= 0)
                 {
                     _enemySpawner.RemoveEnemy(enemy.gameObject);
@@ -97,6 +101,11 @@ public class Bullet : ObjectPooler
                 }
                 Destroy(this.gameObject);
             }
+        }
+
+        if (other.gameObject.tag == "OutOfBounds")
+        {
+            this.gameObject.SetActive(false);
         }
     }
 }
